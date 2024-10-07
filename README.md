@@ -63,7 +63,8 @@ This project houses useful rc config file. LIke vimrc, bashrc, etc
 | `p`          | Paste after the cursor             |
 | `P`          | Paste before the cursor            |
 | `dd`         | Cut (delete) the current line      |
-| `daw`        | Delete around a word               |
+| `dgg`        | Delete all line from cursor to BOF |
+| `ggdG`       | Delete everything in the file      |
 | `diw`        | Delete inside a word               |
 | `"0p`        | Paste from the yank register       |
 | `"ap`        | Paste from register `a`            |
@@ -235,3 +236,90 @@ This project houses useful rc config file. LIke vimrc, bashrc, etc
 | `Ctrl + p`   | Cycle through previous commands    |
 | `Ctrl + n`   | Cycle through next commands        |
 
+
+
+## Pageing
+
+| Command      | Description                        |
+| ------------ | ---------------------------------- |
+| `Ctrl + e`   | Move page 1 line down at a time    |
+| `Ctrl + u`   | Move page 1/2 page up              |
+| `Ctrl + d`   | Move page 1/2 page down            |
+
+
+## Buffers
+:help buffers
+
+
+## Window Height
+CTRL-W = - Resize windows for them to fit on the screen with the same size.
+CTRL-W - - Decrease window’s height.
+CTRL-W + - Increase window’s height.
+CTRL-W < - Decrease window’s width.
+CTRL-W > - Increase window’s width.
+CTRL-W <Down> or CTRL-W j
+CTRL-W <Up> or CTRL-W k
+CTRL-W <Left> or CTRL-W h
+CTRL-W <right> or CTRL-W l
+CTRL-W r - Rotate the windows.
+CTRL-W x - Exchange with the next window
+
+## Window Help
+:help windows
+:help opening-window
+:help window-move-cursor
+:help window-moving
+:help window-resize
+
+## Tabs
+gt - go to the next tab.
+gT - go to the previous tab.
+
+## Mapping Keystrokes
+:nmap - Create new mapping for NORMAL mode.
+:imap - Create new mapping for INSERT mode.
+:xmap - Create new mapping for VISUAL mode.
+:cmap - Create new mapping for COMMAND-LINE mode.
+:nnoremap - Create mapping for NORMAL mode (non recursive)
+:inoremap - Create mapping for INSERT mode (non recursive)
+:vnoremap - Create mapping for VISUAL mode (non recursive)
+:cnoremap - Create mapping for COMMAND-LINE mode (non recursive)
+
+## Leader
+let mapleader = "<space>"
+nnoremap <leader>bn :bn<cr> ;buffer next
+nnoremap <leader>tn gt ;new tab
+:help mapping
+:help leader
+:help key-notation
+
+
+## Single Repeats
+. - Repeat the last change.
+@: - Repeat the last command executed.
+:help complex-repeat
+
+## Undo Tree
+" save undo trees in files
+set undofile
+set undodir=~/.vim/undo
+
+" number of undo saved
+set undolevels=10000 
+
+## Global g
+gf
+gx
+gi
+gv
+gn
+gI
+ga
+gu Lowercase using a motion (for example, guiw).Lowercase using a motion (for example, guiw).
+gU
+
+
+dnf install xclip
+ls | xclip -selection clipboard
+
+alias cb="xclip -selection clipboard"
