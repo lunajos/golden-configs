@@ -318,8 +318,40 @@ ga
 gu Lowercase using a motion (for example, guiw).Lowercase using a motion (for example, guiw).
 gU
 
+Let’s take an example: what happens if you run the command :vimgrep hello *?
 
+    It will search the pattern “hello” in every file of your working directory.
+    It will populate a quickfix list with every position matching your pattern “hello”.
+    It will move your cursor to the first position of the quickfix list.
+
+If you want to know more about vimgrep and other tools you can search with, I wrote an article about that. Other commands (like :make or :grep) also populate automatically a quickfix list.
+
+    :cl or :clist - Display all valid entries of the current quickfix list. You can add a range as argument (only numbers).
+    :cc <number> - Move to the <number>th entry of the current quickfix list.
+    :cnext or :cn - Move to the next entry of the current quickfix list.
+    :cprevious or :cp - Move to the previous entry of the current quickfix list.
+    :cfirst or :cfir - Move to the first entry of the current quickfix list.
+    :clast or :clas - Move to the last entry of the current quickfix list.
+
+Here are additional commands which make quickfix lists really powerful:
+
+    :cdo <cmd> - Execute a command <cmd> on each valid entry of the current quickfix list.
+    :cexpr <expr> or :cex <expr> - Create a quickfix list using the result of evaluating the Vimscript expression <expr>.
+    :caddexpr <expr> or :cadde <expr> - Appends the result of evaluating the Vimscript expression <expr> to the current quickfix list.
+
+    :cex [] - Empty the current quickfix list.
+    :cex system("<cmd>") - Populate your quickfix list with any shell command <cmd>. You can try it with ls for example.
+:copen
+:cope
 dnf install xclip
 ls | xclip -selection clipboard
 
 alias cb="xclip -selection clipboard"
+
+## Vim clipboard
+" Yank to system clipboard
+vnoremap <C-c> "+y
+
+" Paste from system clipboard
+nnoremap <C-v> "+p
+
